@@ -53,7 +53,7 @@ BASH_ETC := $(TARGET_OUT)/etc/$(LOCAL_MODULE)/
 BASH_CONFIGS := $(addprefix $(LOCAL_PATH)/etc/,$(etc_files))
 $(BASH_CONFIGS): BASH_BINARY := $(LOCAL_MODULE)
 $(BASH_CONFIGS): $(LOCAL_INSTALLED_MODULE)
-	@echo "Install: $@ -> $(BASH_ETC)"
+#	@echo "Install: $@ -> $(BASH_ETC)"
 	@mkdir -p $(BASH_ETC)
 	$(hide) cp $@ $(BASH_ETC)
 
