@@ -61,22 +61,4 @@ ALL_DEFAULT_INSTALLED_MODULES += $(BASH_SYMLINKS)
 ALL_MODULES.$(LOCAL_MODULE).INSTALLED += $(BASH_SYMLINKS)
 
 # ========================================================
-# bash configs
-# ========================================================
-etc_files := $(shell ls -1 $(LOCAL_PATH)/etc/)
-
-BASH_ETC := $(TARGET_OUT)/etc/$(LOCAL_MODULE)/
-BASH_CONFIGS := $(addprefix $(LOCAL_PATH)/etc/,$(etc_files))
-$(BASH_CONFIGS): BASH_BINARY := $(LOCAL_MODULE)
-$(BASH_CONFIGS): $(LOCAL_INSTALLED_MODULE)
-#	@echo "Install: $@ -> $(BASH_ETC)"
-	@mkdir -p $(BASH_ETC)
-	$(hide) cp $@ $(BASH_ETC)
-
-ALL_DEFAULT_INSTALLED_MODULES += $(BASH_CONFIGS)
-
-ALL_MODULES.$(LOCAL_MODULE).INSTALLED := \
-    $(ALL_MODULES.$(LOCAL_MODULE).INSTALLED) $(BASH_CONFIGS)
-
-# ========================================================
 include $(call all-makefiles-under,$(LOCAL_PATH))
