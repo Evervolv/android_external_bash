@@ -51,10 +51,10 @@ BASH_SYMLINKS := $(TARGET_ROOT_OUT_BIN)/$(LOCAL_MODULE)
 #BASH_SYMLINKS += $(TARGET_OUT_EXECUTABLES)/$(LOCAL_MODULE)
 $(BASH_SYMLINKS): BASH_BINARY := $(LOCAL_MODULE)
 $(BASH_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "Symlink: $@ -> $(BASH_BINARY)"
+	@echo "Symlink: $@ -> ../system/xbin/$(BASH_BINARY)"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
-	$(hide) ln -sf /system/xbin/$(BASH_BINARY) $@
+	$(hide) ln -sf ../system/xbin/$(BASH_BINARY) $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(BASH_SYMLINKS)
 
