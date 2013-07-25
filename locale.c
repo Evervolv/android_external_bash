@@ -36,7 +36,7 @@
 #include "input.h"	/* For bash_input */
 
 #ifndef errno
-extern int errno;
+#include <errno.h>
 #endif
 
 extern int dump_translatable_strings, dump_po_strings;
@@ -297,7 +297,7 @@ get_locale_var (var)
   locale = lc_all;
 
   if (locale == 0 || *locale == 0)
-    locale = get_string_value (var);
+    locale = get_string_value (var);	/* XXX - mem leak? */
   if (locale == 0 || *locale == 0)
     locale = lang;
   if (locale == 0 || *locale == 0)

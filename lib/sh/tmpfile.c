@@ -37,10 +37,10 @@
 #include <shell.h>
 
 #ifndef errno
-extern int errno;
+#include <errno.h>
 #endif
 
-#define BASEOPENFLAGS	(O_CREAT | O_TRUNC | O_EXCL)
+#define BASEOPENFLAGS	(O_CREAT | O_TRUNC | O_EXCL | O_BINARY)
 
 #define DEFAULT_TMPDIR		"."	/* bogus default, should be changed */
 #define DEFAULT_NAMEROOT	"shtmp"
